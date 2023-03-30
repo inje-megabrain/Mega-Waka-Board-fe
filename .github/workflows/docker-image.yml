@@ -1,0 +1,35 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:      
+    - 
+      name: Checkout
+      uses: actions/checkout@v2.4.2
+      
+    - 
+      name: Docker Login
+      uses: docker/login-action@v2.0.0
+      with: 
+        username: ${{secrets.DOCKERHUB_USERNAME}}
+        password: ${{secrets.DOCKERHUB_TOKEN}}
+        
+    - 
+      name: Build and push Docker images
+      uses: docker/build-push-action@v3.0.0
+      with:
+        contect: .
+        file: ./Dockerfile
+        push: true
+        tags: jongung/waka-fe
+        labels: latest
