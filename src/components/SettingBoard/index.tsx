@@ -5,6 +5,7 @@ import {
   FormControl,
   IconButton,
   InputLabel,
+  Link,
   MenuItem,
   Select,
   Snackbar,
@@ -114,7 +115,15 @@ const SettingBoard = () => {
             sx={{ m: 1, width: "25ch" }}
           />
         </Box>
-
+        <Box textAlign={"center"}>
+          <Link
+            href="https://wakatime.com/settings/api-key"
+            rel="noopener"
+            target={"_blank"}
+          >
+            Wakatime API KEY 확인하러 가기
+          </Link>
+        </Box>
         <Box textAlign={"center"} sx={{ mt: 2 }}>
           <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
             <InputLabel id="demo-simple-select">Organization</InputLabel>
